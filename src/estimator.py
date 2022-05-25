@@ -26,10 +26,8 @@ def get_metrics(model, X_train, X_test, y_train, y_test, cut_off):
 
     print('ROC_AUC:  ', round(roc_auc_score(y_test, y_proba), 3))
     print('Gini:     ', round(2 * roc_auc_score(y_test, y_proba) - 1, 3))
-
     print('F1_score: ', round(f1_score(y_test, y_pred), 3))
     print('Log_loss: ', round(log_loss(y_test, y_pred), 3))
-
     print('Classification_report: \n',
           classification_report(pd.Series(y_proba).apply(lambda x: 1 if x > cut_off else 0),
                                 y_test))
